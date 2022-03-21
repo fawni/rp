@@ -1,3 +1,4 @@
+//go:build !windows
 // +build !windows
 
 package ipc
@@ -8,12 +9,12 @@ import (
 )
 
 // OpenSocket opens the discord-ipc-0 unix socket
-func OpenSocket() error {
+func (ipc *IPC) OpenSocket() error {
 	sock, err := net.DialTimeout("unix", GetIpcPath()+"/discord-ipc-0", time.Second*2)
 	if err != nil {
 		return err
 	}
 
-	socket = sock
+	ipc.socket = sock
 	return nil
 }

@@ -1,69 +1,45 @@
-# rich-go [![Build Status](https://travis-ci.org/x6r/rp.svg?branch=master)](https://travis-ci.org/x6r/rp)
+# rp.go
 
-An implementation of Discord's rich presence in Golang for Linux, macOS and Windows
+An implementation of Discord's rich presence in Golang for Linux, macOS and Windows. Fork of [hugolgst/rich-go](https://github.com/hugolgst/rich-go)
 
 ## Installation
 
 Install `github.com/x6r/rp`:
 
-```
-$ go get github.com/x6r/rp
+```sh
+$ go get -u github.com/x6r/rp
 ```
 
 ## Usage
 
-First of all import rich-go
+create a new client
 
-```golang
-import "github.com/x6r/rp/client"
+```go
+	c, err := rp.NewClient("DISCORD_APP_ID")
+	if err != nil {
+		panic(err)
+	}
 ```
 
-then login by sending the first handshake
+set the rich presence activity
 
-```golang
-err := client.Login("DISCORD_APP_ID")
-if err != nil {
-	panic(err)
-}
+```go
+
+	if err := c.SetActivity(rpc.Activity{
+		State:      "Hey!",
+		Details:    "Running on rp.go!",
+		LargeImage: "largeimageid",
+		LargeText:  "This is the large image",
+		SmallImage: "smallimageid",
+		SmallText:  "And this is the small image",
+	}) err != nil {
+		panic(err)
+	}
+
 ```
 
-and you can set the Rich Presence activity (parameters can be found :
+more details in the [example](example/main.go)
 
-```golang
-err = client.SetActivity(client.Activity{
-	State:      "Heyy!!!",
-	Details:    "I'm running on rich-go :)",
-	LargeImage: "largeimageid",
-	LargeText:  "This is the large image :D",
-	SmallImage: "smallimageid",
-	SmallText:  "And this is the small image",
-	Party: &client.Party{
-		ID:         "-1",
-		Players:    15,
-		MaxPlayers: 24,
-	},
-	Timestamps: &client.Timestamps{
-		Start: time.Now(),
-	},
-})
+## License
 
-if err != nil {
-	panic(err)
-}
-```
-
-More details in the [example](https://github.com/ananagame/rich-go/blob/master/example/main.go)
-
-## Contributing
-
-1. Fork it (https://github.com/x6r/rp/fork)
-2. Create your feature branch (git checkout -b my-new-feature)
-3. Commit your changes (git commit -am 'Add some feature')
-4. Push to the branch (git push origin my-new-feature)
-5. Create a new Pull Request
-
-## Contributors
-
-- [hugolgst](https://github.com/hugolgst) - creator, maintainer
-- [donovansolms](https://github.com/donovansolms) - contributor
-- [heroslender](https://github.com/heroslender) - contributor
+[ISC](LICENSE)

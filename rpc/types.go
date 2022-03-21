@@ -1,4 +1,6 @@
-package client
+package rpc
+
+import "github.com/x6r/rp/ipc"
 
 type Handshake struct {
 	V        string `json:"v"`
@@ -52,4 +54,10 @@ type PayloadSecrets struct {
 type PayloadButton struct {
 	Label string `json:"label,omitempty"`
 	Url   string `json:"url,omitempty"`
+}
+
+type Client struct {
+	ClientID string
+	IPC      *ipc.IPC
+	Logged   bool
 }
