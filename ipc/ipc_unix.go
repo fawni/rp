@@ -15,6 +15,6 @@ func (ipc *IPC) OpenSocket() error {
 		return err
 	}
 
-	ipc.socket = sock
+	ipc.Socket = sock
 	return nil
 }
