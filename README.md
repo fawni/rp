@@ -1,6 +1,6 @@
 # rp.go
 
-An implementation of Discord's rich presence in Golang for Linux, macOS and Windows. Fork of [hugolgst/rich-go](https://github.com/hugolgst/rich-go)
+An implementation of Discord's rich presence for Linux, MacOS and Windows in Go. Fork of [hugolgst/rich-go](https://github.com/hugolgst/rich-go).
 
 ## Installation
 
