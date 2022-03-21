@@ -1,4 +1,4 @@
-# rp.go
+# rp.go [![Build Status](https://img.shields.io/github/workflow/status/x6r/rp/build?logo=github)](https://github.com/x6r/rp/actions)
 
 An implementation of Discord's rich presence for Linux, MacOS and Windows in Go. Fork of [hugolgst/rich-go](https://github.com/hugolgst/rich-go).
 
