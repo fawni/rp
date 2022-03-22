@@ -75,21 +75,7 @@ func (c *Client) ResetActivity() error {
 		return nil
 	}
 
-	nonce, err := c.getNonce()
-	if err != nil {
-		log.Println(err)
-	}
-
-	payload, err := json.Marshal(Frame{
-		"SET_ACTIVITY",
-		Args{
-			os.Getpid(),
-			mapActivity(&Activity{}),
-		},
-		nonce,
-	})
-
-	if _, err := c.IPC.Send(1, string(payload)); err != nil {
+	if _, err := c.IPC.Send(1, ""); err != nil {
 		return err
 	}
 	return nil
