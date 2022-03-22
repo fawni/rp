@@ -34,7 +34,7 @@ func main() {
 		Buttons: []*rpc.Button{
 			{
 				Label: "GitHub",
-				Url:   "https://github.com/x6r/rp.go",
+				Url:   "https://github.com/x6r/rp",
 			},
 		},
 	}); err != nil {
@@ -45,7 +45,9 @@ func main() {
 	// Sleep for a few seconds to see the update
 	fmt.Println("Sleeping...")
 	time.Sleep(time.Second * 10)
-	c.ResetActivity()
+	if err := c.ResetActivity(); err != nil {
+		log.Fatalln("Could not reset activity:", err)
+	}
 	fmt.Println("Reset!")
 	time.Sleep(time.Second * 10)
 }

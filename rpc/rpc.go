@@ -64,8 +64,9 @@ func (c *Client) SetActivity(activity Activity) error {
 		return err
 	}
 
-	// TODO: Response should be parsed
-	c.IPC.Send(1, string(payload))
+	if _, err := c.IPC.Send(1, string(payload)); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -74,8 +75,23 @@ func (c *Client) ResetActivity() error {
 		return nil
 	}
 
-	// TODO: Response should be parsed
-	c.IPC.Send(1, "")
+	nonce, err := c.getNonce()
+	if err != nil {
+		log.Println(err)
+	}
+
+	payload, err := json.Marshal(Frame{
+		"SET_ACTIVITY",
+		Args{
+			os.Getpid(),
+			mapActivity(&Activity{}),
+		},
+		nonce,
+	})
+
+	if _, err := c.IPC.Send(1, string(payload)); err != nil {
+		return err
+	}
 	return nil
 }
 

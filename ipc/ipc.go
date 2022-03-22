@@ -49,7 +49,12 @@ func (ipc *IPC) Read() string {
 	buf := make([]byte, 512)
 	payloadlength, _ := ipc.Socket.Read(buf)
 
-	return string(buf[8:payloadlength])
+	buffer := new(bytes.Buffer)
+	for i := 8; i < payloadlength; i++ {
+		buffer.WriteByte(buf[i])
+	}
+
+	return buffer.String()
 }
 
 // Send opcode and payload to the unix socket
