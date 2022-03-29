@@ -16,7 +16,7 @@ func main() {
 	}
 
 	now := time.Now()
-	if err := c.SetActivity(rpc.Activity{
+	if err := c.SetActivity(&rpc.Activity{
 		State:      "Hey!",
 		Details:    "Running on rp.go!",
 		LargeImage: "largeimageid",

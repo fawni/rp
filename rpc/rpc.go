@@ -41,7 +41,7 @@ func (c *Client) Logout() {
 	}
 }
 
-func (c *Client) SetActivity(activity Activity) error {
+func (c *Client) SetActivity(activity *Activity) error {
 	if !c.Logged {
 		return nil
 	}
@@ -55,7 +55,7 @@ func (c *Client) SetActivity(activity Activity) error {
 		"SET_ACTIVITY",
 		Args{
 			os.Getpid(),
-			mapActivity(&activity),
+			mapActivity(activity),
 		},
 		nonce,
 	})

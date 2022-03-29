@@ -28,7 +28,7 @@ if err != nil {
 set the rich presence activity
 
 ```go
-if err := c.SetActivity(rpc.Activity{
+if err := c.SetActivity(&rpc.Activity{
 	State:      "Hey!",
 	Details:    "Running on rp.go!",
 	LargeImage: "largeimageid",
