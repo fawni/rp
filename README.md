@@ -1,4 +1,5 @@
-# rp [![Build Status](https://img.shields.io/github/workflow/status/fawni/rp/build?logo=github)](https://github.com/fawni/rp/actions)
+# rp [![Build Status](https://img.shields.io/github/actions/workflow/status/fawni/rp/build.yml?logo=github&branch=master)](https://github.com/fawni/rp/actions)
+
 
 An implementation of Discord's rich presence for Linux, MacOS and Windows in Go. Fork of [hugolgst/rich-go](https://github.com/hugolgst/rich-go).
 
