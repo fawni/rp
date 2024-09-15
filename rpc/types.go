@@ -26,6 +26,7 @@ type PayloadActivity struct {
 	Timestamps *PayloadTimestamps `json:"timestamps,omitempty"`
 	Secrets    *PayloadSecrets    `json:"secrets,omitempty"`
 	Buttons    []*PayloadButton   `json:"buttons,omitempty"`
+	Type       ActivityType       `json:"type,omitempty"`
 }
 
 type PayloadAssets struct {
