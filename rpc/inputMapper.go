@@ -26,6 +26,8 @@ type Activity struct {
 	Secrets *Secrets
 	// Clickable buttons that open a URL in the browser
 	Buttons []*Button
+	// The type of the activity, defaults to 0 (Playing) if not set
+	Type ActivityType
 }
 
 // Button holds a label and the corresponding URL that is opened on press
@@ -64,6 +66,16 @@ type Secrets struct {
 	Spectate string
 }
 
+/// ActivityType is the type of the activity (Playing, Listening, Watching, Competing)
+type ActivityType int
+
+const (
+	ActivityTypePlaying   ActivityType = 0
+	ActivityTypeListening ActivityType = 2
+	ActivityTypeWatching  ActivityType = 3
+	ActivityTypeCompeting ActivityType = 5
+)
+
 func mapActivity(activity *Activity) *PayloadActivity {
 	final := &PayloadActivity{
 		Details: activity.Details,
@@ -74,6 +86,7 @@ func mapActivity(activity *Activity) *PayloadActivity {
 			SmallImage: activity.SmallImage,
 			SmallText:  activity.SmallText,
 		},
+		Type: activity.Type,
 	}
 
 	if activity.Timestamps != nil && activity.Timestamps.Start != nil {
